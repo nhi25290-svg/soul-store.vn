@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOUL STORE | Thời trang dành cho chất riêng</title>
+<style>
+:root{--orange:#ee4d2d;--ink:#222;--muted:#757575;--line:#eee;--bg:#f5f5f5;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.topbar{background:#f53d2d;color:white;padding:8px max(calc((100% - 1200px)/2),16px);display:flex;justify-content:space-between;font-size:12px}
+.header{background:white;box-shadow:0 2px 6px #0000000a}.header-inner{max-width:1200px;margin:auto;padding:18px 16px;display:flex;gap:28px;align-items:center}
+.logo{font-size:29px;letter-spacing:2px;font-weight:900;color:var(--orange);white-space:nowrap}.logo small{display:block;font-size:10px;letter-spacing:3px;color:#555;text-align:center;margin-top:-5px}
+.search{display:flex;flex:1;border:2px solid var(--orange);border-radius:3px;padding:3px;background:white}.search input{border:0;outline:0;padding:9px 12px;flex:1;min-width:0}.search button{border:0;background:var(--orange);color:white;padding:0 22px;border-radius:2px}
+.cart-btn{border:0;background:white;color:var(--orange);font-size:15px;white-space:nowrap}.count{display:inline-flex;background:var(--orange);color:white;border-radius:99px;min-width:20px;height:20px;align-items:center;justify-content:center;font-size:11px;margin-left:4px}
+.nav{max-width:1200px;margin:auto;padding:0 16px 12px;display:flex;gap:24px;color:#555}.nav a:hover{color:var(--orange)}
+main{max-width:1200px;margin:20px auto;padding:0 16px}.hero{background:linear-gradient(115deg,#f9e9df,#f9f3ee 60%,#e8d8ce);display:grid;grid-template-columns:1.1fr .9fr;min-height:280px;border-radius:4px;overflow:hidden;margin-bottom:20px}
+.hero-copy{padding:42px 44px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.eyebrow{color:var(--orange);font-weight:bold;letter-spacing:2px;font-size:12px}.hero h1{font-size:38px;line-height:1.12;margin:12px 0}.hero p{color:#625951;max-width:420px}.primary{background:var(--orange);color:white;border:0;padding:11px 18px;border-radius:3px;font-weight:bold}.hero-img{min-height:280px;background:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=85') center/cover}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.benefit{background:white;padding:14px;border-radius:3px;display:flex;gap:10px;align-items:center}.benefit b{display:block}.benefit span{color:var(--muted);font-size:12px}
+.section-head{display:flex;justify-content:space-between;align-items:center;background:white;padding:16px 18px;border-bottom:1px solid var(--line);margin-top:18px}.section-head h2{font-size:18px;color:var(--orange);font-weight:500;margin:0}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid #ddd;background:white;padding:7px 12px;border-radius:3px}.filter.active,.filter:hover{border-color:var(--orange);color:var(--orange)}
+.products{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:12px 0}.product{background:white;border:1px solid #f0f0f0;transition:.18s;min-width:0;position:relative}.product:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 3px 12px #0000000b}.product img{width:100%;aspect-ratio:4/4.6;object-fit:cover;background:#eee;display:block}.product-body{padding:10px}.product h3{font-size:13px;font-weight:400;line-height:1.4;height:37px;overflow:hidden;margin:0 0 8px}.price{color:var(--orange);font-size:17px;margin-bottom:6px}.old-price{font-size:11px;color:#999;text-decoration:line-through;margin-left:5px}.product-meta{display:flex;justify-content:space-between;font-size:11px;color:#777;margin-bottom:10px}.stock{color:#238b45}.add{width:100%;border:1px solid var(--orange);color:var(--orange);background:#fff7f5;padding:8px;border-radius:2px}.add:hover{background:var(--orange);color:white}.tag{position:absolute;top:0;left:0;background:var(--orange);color:white;padding:3px 7px;font-size:10px}
+.about,.reviews{background:white;padding:22px;margin-top:20px}.about h2,.reviews h2{margin:0 0 12px;font-size:20px}.about p{color:#555}.member-table{width:100%;border-collapse:collapse;margin-top:12px}.member-table th,.member-table td{text-align:left;border-bottom:1px solid var(--line);padding:10px}.member-table th{background:#fff6f3;color:#b83a22}.note{font-size:12px;color:#777}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.review{border:1px solid var(--line);padding:15px;border-radius:3px}.stars{color:#f6a623;letter-spacing:2px}.review p{color:#555}.review small{color:#888}
+footer{margin-top:28px;background:#fff;padding:25px 16px;color:#666}.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-inner b{color:var(--orange)}.text-btn{border:0;background:none;color:var(--orange);text-decoration:underline;padding:0}
+.overlay{position:fixed;inset:0;background:#0007;z-index:10;display:none}.overlay.show{display:block}.drawer{position:fixed;right:0;top:0;height:100%;width:min(440px,100%);background:white;z-index:11;transform:translateX(105%);transition:.25s;padding:22px;overflow:auto;box-shadow:-4px 0 20px #0002}.drawer.show{transform:translateX(0)}.drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:14px}.drawer-head h2{margin:0}.close{border:0;background:white;font-size:24px}.cart-row{display:grid;grid-template-columns:65px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.cart-row img{width:65px;height:75px;object-fit:cover}.cart-row h4{margin:0 0 5px;font-weight:500}.cart-row small{color:#777}.qty{display:flex;align-items:center;gap:8px;margin-top:8px}.qty button{border:1px solid #ddd;background:white;width:24px;height:24px}.remove{color:var(--orange);border:0;background:white;font-size:12px}.summary{margin-top:18px;border-top:1px solid var(--line);padding-top:15px}.sumline{display:flex;justify-content:space-between;margin:8px 0}.sumline.total{font-size:18px;color:var(--orange);font-weight:bold}.checkout{width:100%;margin-top:10px;padding:13px}.empty{text-align:center;color:#777;padding:35px 0}
+.modal{position:fixed;z-index:20;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:16px}.modal.show{display:flex}.modal-card{background:white;border-radius:5px;width:min(560px,100%);padding:22px;max-height:90vh;overflow:auto}.modal-card h2{margin-top:0}.field{display:block;margin:12px 0}.field span{display:block;font-weight:bold;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;border:1px solid #ccc;padding:10px;border-radius:3px}.hint{background:#fff7f0;border-left:3px solid var(--orange);padding:10px;font-size:12px;color:#6b5147}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+@media(max-width:900px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}.header-inner{gap:12px;flex-wrap:wrap}.search{order:3;flex-basis:100%}.hero h1{font-size:30px}.benefits{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.topbar{font-size:10px}.logo{font-size:24px}.nav{gap:14px;overflow:auto;white-space:nowrap}.hero{grid-template-columns:1fr}.hero-copy{padding:28px}.hero-img{min-height:180px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.benefits{grid-template-columns:1fr 1fr}.benefit{padding:10px}.review-grid{grid-template-columns:1fr}.section-head{align-items:flex-start;gap:12px;flex-direction:column}.product h3{height:auto;min-height:36px}}
+</style>
+</head>
+<body>
+<div class="topbar"><span>SOUL STORE · Mặc theo chất riêng của bạn</span><span>Hỗ trợ khách hàng | Đơn hàng được gọi xác nhận</span></div>
+<header class="header">
+ <div class="header-inner">
+  <a class="logo" href="#" aria-label="SOUL STORE trang chủ">SOUL STORE<small>YOUR STYLE, YOUR SOUL</small></a>
+  <form class="search" id="searchForm"><input id="searchInput" placeholder="Tìm áo thun, sơ mi, quần jeans..." aria-label="Tìm sản phẩm"><button type="submit">Tìm kiếm</button></form>
+  <button class="cart-btn" id="openCart">🛒 Giỏ hàng <span class="count" id="cartCount">0</span></button>
+ </div>
+ <nav class="nav"><a href="#products">Tất cả sản phẩm</a><a href="#products" data-navcat="Áo">Áo</a><a href="#products" data-navcat="Quần">Quần</a><a href="#about">Về chúng tôi</a><a href="#reviews">Đánh giá</a></nav>
+</header>
+<main>
+ <section class="hero">
+  <div class="hero-copy"><div class="eyebrow">NEW SEASON · NEW YOU</div><h1>Đơn giản trong thiết kế.<br>Khác biệt trong chất riêng.</h1><p>Những item thời trang dễ phối, thoải mái và phù hợp với phong cách hằng ngày.</p><a class="primary" href="#products">KHÁM PHÁ NGAY →</a></div>
+  <div class="hero-img" role="img" aria-label="Ảnh phong cách thời trang đường phố"></div>
+ </section>
+ <section class="benefits">
+  <div class="benefit"><span>🚚</span><div><b>Giao hàng toàn quốc</b><span>Thông tin giao hàng được xác nhận</span></div></div>
+  <div class="benefit"><span>☎️</span><div><b>Xác nhận đơn hàng</b><span>Shop gọi điện sau khi đặt</span></div></div>
+  <div class="benefit"><span>👕</span><div><b>Dễ phối hằng ngày</b><span>Thiết kế tối giản, hiện đại</span></div></div>
+  <div class="benefit"><span>💬</span><div><b>Hỗ trợ khách hàng</b><span>Liên hệ khi cần tư vấn</span></div></div>
+ </section>
+ <div class="section-head" id="products"><h2>GỢI Ý DÀNH CHO BẠN</h2><div class="filters" id="filters"><button class="filter active" data-cat="Tất cả">Tất cả</button><button class="filter" data-cat="Áo">Áo</button><button class="filter" data-cat="Quần">Quần</button><button class="filter" data-cat="Phụ kiện">Phụ kiện</button></div></div>
+ <div class="products" id="productGrid"></div>
+ <section class="about" id="about">
+  <h2>Về SOUL STORE</h2>
+  <p><b>SOUL STORE</b> là cửa hàng thời trang theo phong cách hiện đại, tối giản, hướng đến những món đồ dễ mặc, dễ phối và thể hiện cá tính riêng. Website này được xây dựng trong khuôn khổ bài tập thiết kế website bán hàng.</p>
+  <p class="note">Thông tin tồn kho và giá dưới đây là dữ liệu mẫu phục vụ bài tập, cần được cửa hàng xác nhận nếu sử dụng kinh doanh thực tế.</p>
+  <h3>Thành viên thực hiện</h3>
+  <table class="member-table"><thead><tr><th>STT</th><th>MSSV</th><th>Họ và tên</th></tr></thead><tbody id="memberRows"></tbody></table>
+  <p class="note">Hiện mới có thông tin của 1 thành viên do nhóm cung cấp. Các thành viên còn lại để trống chờ cập nhật, không tự tạo MSSV hoặc họ tên.</p>
+ </section>
+ <section class="reviews" id="reviews">
+  <h2>KHÁCH HÀNG NÓI GÌ?</h2>
+  <p class="note">Các feedback dưới đây là nội dung minh họa bằng tiếng Việt, không phải đánh giá khách hàng đã được xác minh.</p>
+  <div class="review-grid">
+   <article class="review"><div class="stars">★★★★★</div><b>Minh Anh</b><p>“Mẫu áo tối giản, dễ phối với quần jeans. Giao diện shop cũng dễ tìm sản phẩm.”</p><small>Feedback minh họa · Khách hàng Việt Nam</small></article>
+   <article class="review"><div class="stars">★★★★★</div><b>Hoàng Nam</b><p>“Mình thích kiểu dáng basic, mặc đi học hay đi chơi đều hợp. Có thông tin tồn kho khá tiện.”</p><small>Feedback minh họa · Khách hàng Việt Nam</small></article>
+   <article class="review"><div class="stars">★★★★☆</div><b>Thảo Vy</b><p>“Các mẫu nhìn trẻ trung, giá dễ xem. Mong shop bổ sung thêm màu sắc và size.”</p><small>Feedback minh họa · Khách hàng Việt Nam</small></article>
+  </div>
+ </section>
+</main>
+<footer><div class="footer-inner"><div><b>SOUL STORE</b><br>YOUR STYLE, YOUR SOUL<br><span class="note">Website mô phỏng phục vụ bài tập</span></div><div><b>Chính sách đặt hàng</b><br>Khách điền form đặt hàng; shop sẽ gọi điện xác nhận trước khi xử lý đơn.</div><div><b>Cấu hình bài tập</b><br><button class="text-btn" id="openSettings">Thiết lập Google Form thanh toán</button></div></div></footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Giỏ hàng">
+ <div class="drawer-head"><h2>Giỏ hàng của bạn</h2><button class="close" id="closeCart" aria-label="Đóng">×</button></div>
+ <div id="cartItems"></div>
+ <div class="summary" id="cartSummary"></div>
+</aside>
+
+<div class="modal" id="settingsModal" role="dialog" aria-modal="true">
+ <div class="modal-card"><h2>Thiết lập Google Form</h2>
+  <p>Để nút thanh toán chuyển tới form thật, hãy tạo Google Form công khai, sao chép URL gửi biểu mẫu và dán vào đây.</p>
+  <label class="field"><span>URL Google Form</span><input id="formUrlInput" type="url" placeholder="https://docs.google.com/forms/d/e/.../viewform"></label>
+  <div class="hint">Không có URL form thật thì website không thể tự tạo hoặc đoán ra biểu mẫu của bạn. Cấu hình được lưu trong trình duyệt hiện tại. Khi triển khai website cho người khác sử dụng, hãy đặt URL này trong mã nguồn để mọi khách đều dùng được.</div>
+  <div class="modal-actions"><button class="filter" id="cancelSettings">Hủy</button><button class="primary" id="saveSettings">Lưu URL</button></div>
+ </div>
+</div>
+
+<div class="modal" id="checkoutModal" role="dialog" aria-modal="true">
+ <div class="modal-card"><h2>Thông tin đơn hàng</h2>
+  <p class="note">Kiểm tra sản phẩm và tổng tiền trong giỏ trước khi tiếp tục.</p>
+  <div id="checkoutPreview" class="hint"></div>
+  <div class="hint">Sau khi gửi biểu mẫu, SOUL STORE sẽ gọi điện cho khách để xác nhận đơn hàng. Website mẫu không thu thập hay lưu thông tin thẻ thanh toán.</div>
+  <div class="modal-actions"><button class="filter" id="cancelCheckout">Quay lại giỏ</button><button class="primary" id="goToForm">Tiến hành thanh toán ↗</button></div>
+ </div>
+</div>
+<script>
+const products = [
+ {id:1,name:"Áo thun SOUL Basic trắng",cat:"Áo",price:129000,old:169000,stock:28,tag:"BÁN CHẠY",img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=650&q=80"},
+ {id:2,name:"Áo thun SOUL Oversize đen",cat:"Áo",price:159000,old:199000,stock:21,tag:"",img:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=650&q=80"},
+ {id:3,name:"Áo sơ mi SOUL Relax xanh nhạt",cat:"Áo",price:229000,old:279000,stock:15,tag:"MỚI",img:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=650&q=80"},
+ {id:4,name:"Áo polo SOUL Minimal be",cat:"Áo",price:189000,old:239000,stock:18,tag:"",img:"https://images.unsplash.com/photo-1625910513413-5fc45e7d4c6c?auto=format&fit=crop&w=650&q=80"},
+ {id:5,name:"Quần jeans SOUL Straight xanh",cat:"Quần",price:329000,old:389000,stock:12,tag:"",img:"https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=650&q=80"},
+ {id:6,name:"Quần short SOUL Daily đen",cat:"Quần",price:199000,old:249000,stock:17,tag:"",img:"https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=650&q=80"},
+ {id:7,name:"Quần kaki SOUL Classic kem",cat:"Quần",price:289000,old:339000,stock:9,tag:"",img:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=650&q=80"},
+ {id:8,name:"Túi tote SOUL Canvas",cat:"Phụ kiện",price:89000,old:119000,stock:35,tag:"GIÁ TỐT",img:"https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=650&q=80"}
+];
+const money=n=>new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(n);
+let cart = {};
+let category = "Tất cả";
+let query = "";
+const $=id=>document.getElementById(id);
+function renderProducts(){
+ const shown=products.filter(p=>(category==="Tất cả"||p.cat===category)&&p.name.toLowerCase().includes(query.toLowerCase()));
+ $('productGrid').innerHTML=shown.map(p=>`<article class="product"><div class="tag" style="${p.tag?'':'display:none'}">${p.tag}</div><img loading="lazy" src="${p.img}" alt="${p.name}" onerror="this.onerror=null;this.src='https://placehold.co/500x600/f2eee9/555?text=SOUL+STORE'"><div class="product-body"><h3>${p.name}</h3><div class="price">${money(p.price)} <span class="old-price">${money(p.old)}</span></div><div class="product-meta"><span>Đã bán ${[12,8,6,15,4,9,3,21][p.id-1]}</span><span class="stock">Kho: ${p.stock}</span></div><button class="add" onclick="addToCart(${p.id})" ${p.stock===0?'disabled':''}>＋ Thêm vào giỏ</button></div></article>`).join('')||'<p>Không tìm thấy sản phẩm phù hợp.</p>';
+}
+function renderMembers(){
+ const known=[{id:"123456789",name:"ng van a"}];
+ let rows=known.map((m,i)=>`<tr><td>${i+1}</td><td>${m.id}</td><td>${m.name}</td></tr>`).join('');
+ for(let i=2;i<=14;i++) rows+=`<tr><td>${i}</td><td>Chưa cập nhật</td><td>Chưa cập nhật</td></tr>`;
+ $('memberRows').innerHTML=rows;
+}
+function countCart(){return Object.values(cart).reduce((a,b)=>a+b,0)}
+function total(){return Object.entries(cart).reduce((s,[id,q])=>s+products.find(p=>p.id===+id).price*q,0)}
+function renderCart(){
+ $('cartCount').textContent=countCart();
+ if(!countCart()){$('cartItems').innerHTML='<div class="empty">🛍️<p>Giỏ hàng đang trống.</p><button class="primary" onclick="closeCart();document.getElementById(\'products\').scrollIntoView({behavior:\'smooth\'})">Tiếp tục mua sắm</button></div>';$('cartSummary').innerHTML='';return}
+ $('cartItems').innerHTML=Object.entries(cart).map(([id,q])=>{const p=products.find(x=>x.id===+id);return `<div class="cart-row"><img src="${p.img}" alt="${p.name}"><div><h4>${p.name}</h4><div style="color:var(--orange)">${money(p.price)}</div><small>Còn ${p.stock} sản phẩm</small><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><span>${q}</span><button onclick="changeQty(${p.id},1)">＋</button></div></div><button class="remove" onclick="removeItem(${p.id})">Xóa</button></div>`}).join('');
+ $('cartSummary').innerHTML=`<div class="sumline"><span>Tạm tính (${countCart()} sản phẩm)</span><b>${money(total())}</b></div><div class="sumline"><span>Phí vận chuyển</span><span>Sẽ xác nhận sau</span></div><div class="sumline total"><span>Tổng tiền hàng</span><span>${money(total())}</span></div><p class="note">Phí vận chuyển (nếu có) sẽ được thông báo khi shop gọi xác nhận.</p><button class="primary checkout" onclick="startCheckout()">TIẾN HÀNH THANH TOÁN</button>`;
+}
+function addToCart(id){const p=products.find(x=>x.id===id);if((cart[id]||0)>=p.stock){alert('Số lượng trong giỏ đã đạt tồn kho mẫu.');return}cart[id]=(cart[id]||0)+1;renderCart();$('cartDrawer').classList.add('show');$('overlay').classList.add('show')}
+function changeQty(id,d){const p=products.find(x=>x.id===id);const next=(cart[id]||0)+d;if(next<=0)delete cart[id];else if(next<=p.stock)cart[id]=next;else alert('Không đủ hàng tồn kho.');renderCart()}
+function removeItem(id){delete cart[id];renderCart()}
+function closeCart(){$('cartDrawer').classList.remove('show');$('overlay').classList.remove('show')}
+function startCheckout(){if(!countCart()){alert('Giỏ hàng đang trống.');return}closeCart();$('checkoutPreview').innerHTML=Object.entries(cart).map(([id,q])=>{let p=products.find(x=>x.id===+id);return `${p.name} × ${q} — ${money(p.price*q)}`}).join('<br>')+`<hr><b>Tổng tiền hàng: ${money(total())}</b>`;$('checkoutModal').classList.add('show')}
+function getFormUrl(){return localStorage.getItem('soulStoreGoogleFormUrl')||''}
+function openSettings(){$('formUrlInput').value=getFormUrl();$('settingsModal').classList.add('show')}
+$('openCart').onclick=()=>{$('cartDrawer').classList.add('show');$('overlay').classList.add('show')};
+$('closeCart').onclick=closeCart;$('overlay').onclick=closeCart;
+$('filters').addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;category=b.dataset.cat;document.querySelectorAll('.filter[data-cat]').forEach(x=>x.classList.toggle('active',x===b));renderProducts()});
+document.querySelectorAll('[data-navcat]').forEach(a=>a.addEventListener('click',()=>{category=a.dataset.navcat;document.querySelectorAll('.filter[data-cat]').forEach(x=>x.classList.toggle('active',x.dataset.cat===category));renderProducts()}));
+$('searchForm').addEventListener('submit',e=>{e.preventDefault();query=$('searchInput').value.trim();renderProducts();$('products').scrollIntoView({behavior:'smooth'})});
+$('openSettings').onclick=openSettings;$('cancelSettings').onclick=()=>$('settingsModal').classList.remove('show');
+$('saveSettings').onclick=()=>{const url=$('formUrlInput').value.trim();if(url&&!/^https:\/\/docs\.google\.com\/forms\/d\/(e\/)?[^ ]+/.test(url)){alert('Vui lòng nhập URL Google Forms hợp lệ bắt đầu bằng https://docs.google.com/forms/');return}if(url)localStorage.setItem('soulStoreGoogleFormUrl',url);else localStorage.removeItem('soulStoreGoogleFormUrl');$('settingsModal').classList.remove('show');alert(url?'Đã lưu URL trên trình duyệt này. Hãy kiểm tra thử form trước khi nộp bài.':'Đã xóa URL Google Form.');};
+$('cancelCheckout').onclick=()=>$('checkoutModal').classList.remove('show');
+$('goToForm').onclick=()=>{const url=getFormUrl();if(!url){$('checkoutModal').classList.remove('show');openSettings();alert('Chưa cấu hình Google Form thật. Hãy dán URL công khai của form rồi lưu, sau đó bấm thanh toán lại.');return}if(!/^https:\/\/docs\.google\.com\/forms\/d\/(e\/)?[^ ]+/.test(url)){alert('URL Google Form chưa hợp lệ.');return}window.location.href=url};
+renderProducts();renderCart();renderMembers();
+</script>
+</body>
+</html>
